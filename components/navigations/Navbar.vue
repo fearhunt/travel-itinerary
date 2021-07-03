@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="light">
+  <b-navbar toggleable="lg" type="light" :class="isHomepage">
     <b-navbar-brand to="/">
       <h2 class="navbar-brand-title mb-0">itin</h2>
     </b-navbar-brand>
@@ -24,16 +24,12 @@
 
 <script>
   export default {
-    methods: {
-      // async logout() {
-      //   this.$nuxt.$loading.start();
-
-      //   await this.$auth.$storage.removeUniversal('roles');
-      //   await this.$auth.logout();
-      //   this.isLoggedIn = false;
-
-      //   setTimeout(() => this.$nuxt.$loading.finish(), 500);
-      // }
+    computed: {
+      isHomepage() {
+        if (this.$route.path == "/") {
+          return "transparent";
+        }
+      }
     }
   }
 </script>

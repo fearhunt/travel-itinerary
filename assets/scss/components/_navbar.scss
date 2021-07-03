@@ -5,8 +5,23 @@
   width: 100%;
   padding: 0.8rem 1.5rem;
   background: white;
-  color: $black;
-  box-shadow: $itin-shadow;
+  transition: $itin-transition;
+
+  &.transparent {
+    background: transparent;
+
+    .nav-link {
+      color: white !important;
+
+      &:hover {
+        color: $primary !important;
+      }
+    }
+  }
+
+  &:not(&.transparent) {
+    box-shadow: $itin-shadow;
+  }
 
   .navbar-brand-title {
     color: $primary;

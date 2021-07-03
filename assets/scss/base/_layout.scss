@@ -1,4 +1,6 @@
 section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   padding: 1.5rem;
 
   @media (max-width: 768px) {
@@ -13,6 +15,10 @@ section {
 
     hr {
       border-top-color: white;
+    }
+
+    &-light {
+      background: rgba($primary-light, 0.3) !important;
     }
   }
 

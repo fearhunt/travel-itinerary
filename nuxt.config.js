@@ -65,7 +65,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: "https://bibimbap1.herokuapp.com/"
+  },
 
   // Nuxt Auth module configuration: https://auth.nuxtjs.org/guide/scheme
   auth: {},
