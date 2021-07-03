@@ -15,8 +15,8 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto d-flex align-items-center p-2">
         <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/a">Discover</b-nav-item>
-        <b-nav-item to="/auth/login" class="btn btn-md btn-primary">Go StayCation</b-nav-item>
+        <b-nav-item to="/?page=discover">Discover</b-nav-item>
+        <b-nav-item to="/?auth=login" class="btn btn-md btn-primary">Go StayCation</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
