@@ -1,0 +1,55 @@
+section {
+  padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.bg {
+  &-primary {
+    background: $primary !important;
+    color: white;
+
+    hr {
+      border-top-color: white;
+    }
+  }
+
+  &-secondary {
+    background: $secondary !important;
+    color: white;
+
+    hr {
+      border-top-color: white;
+    }
+  }
+
+  &-light {
+    background: white !important;
+  }
+}
+
+.dialog-box {
+  &::before {
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 5rem solid black;
+    border-right: 2.5rem solid $primary-light;
+
+    // bottom: 100%;
+    // left: 7%;
+    // border: solid transparent;
+    // content: " ";
+    // height: 0;
+    // width: 0;
+    // position: absolute;
+    // pointer-events: none;
+    // border-bottom-color: $green;
+    // border-width: 10px;
+    // margin-left: -10px;
+  }
+}

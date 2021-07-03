@@ -1,0 +1,23 @@
+.input-group {
+  .form-control {
+    border-radius: $itin-border-radius;
+  }
+
+  .input-group {
+    &-prepend {
+      .input-group-text {
+        border-top-left-radius: $itin-border-radius;
+        border-bottom-left-radius: $itin-border-radius;
+        width: 3rem;
+        justify-content: center;
+      }
+    }
+
+    &-append {
+      .input-group-text {
+        border-top-right-radius: $itin-border-radius;
+        border-bottom-right-radius: $itin-border-radius;
+      }
+    }
+  }
+}

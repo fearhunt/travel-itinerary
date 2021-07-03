@@ -1,0 +1,59 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 2020;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  color: $black;
+  box-shadow: $itin-shadow;
+
+  .navbar-brand-title {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: $black;
+        font-weight: 500;
+        padding: 0.25rem 0.85rem;
+        margin: 0 0.85rem;
+        
+        &.nuxt-link-exact-active {
+          border-bottom: $itin-border $primary;
+          margin-bottom: -0.25rem;
+        }
+
+        &:hover {
+          color: $primary;
+        }
+
+        @media (max-width: 992px) {
+          margin: 0.55rem 0;
+
+          &.nuxt-link-exact-active {
+            margin-bottom: calc(0.55rem - 0.25rem);
+          }
+        }
+      }
+
+      &.btn-primary {
+        .nav-link {
+          color: white;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.navbar-light {
+  .navbar-toggler {
+    border: $itin-border $primary;
+    border-radius: $itin-border-radius;
+    color: $primary;
+  }
+}

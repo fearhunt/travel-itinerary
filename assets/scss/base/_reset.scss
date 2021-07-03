@@ -1,0 +1,61 @@
+body {
+  background: #FFFDFF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  // margin: 0;
+}
+
+a {
+  color: $primary;
+  transition: $itin-transition;
+
+  &:hover {
+    color: $primary-light;
+    text-decoration: none;
+  }
+}
+
+label {
+  margin-bottom: 0;
+}
+
+input {
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  &.form-control {
+    border-radius: $itin-border-radius;
+    margin: 0.25rem 0;
+    padding: 1.25rem 2rem;
+    
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.35);
+    }
+
+    /* Firefox */
+    &::-moz-placeholder {
+      color: rgba(0, 0, 0, 0.35);
+    }
+  }
+}
+
+hr {
+  border-top: 0.25rem solid black;
+}
