@@ -82,7 +82,7 @@
       </template>
 
       <template v-else>
-        <section class="d-flex align-items-center justify-content-center" style="height: 70vh">
+        <section class="d-flex align-items-center justify-content-center min-vh-75">
           <b-container>
             <b-row>
               <b-col>

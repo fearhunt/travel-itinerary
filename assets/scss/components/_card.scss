@@ -38,7 +38,7 @@
 .lists-container {
   display: flex;
   align-items: flex-start;
-  padding: 0 0.8rem 0.8rem;
+  padding: 0 0.8rem 1.5rem 0.8rem;
   overflow-x: auto;
   grid-auto-columns: 21rem !important;
   grid-column-gap: 2rem !important;
@@ -113,7 +113,7 @@
   color: white;
   background-color: $black;
   padding: 0.25rem !important;
-  margin:0.5rem !important;
+  margin: 0.5rem !important;
   text-align: left;
   border-radius: $itin-border-radius;
 
@@ -131,7 +131,7 @@
 }
 
 .add-list-btn {
-  flex: 0 0 27rem;
+  // flex: 0 0 27rem;
   display: block;
   background-color: $primary;
   color: white;

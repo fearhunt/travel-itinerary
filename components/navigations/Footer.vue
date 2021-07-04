@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col sm="12" md="2" class="my-auto">
-          <h2 class="brand-title">Itin</h2>
+          <h2 class="brand-title">itin</h2>
           <nuxt-link to="/?page=partner" class="btn btn-light btn-sm font-weight-bold my-2">Be Our Partner!</nuxt-link>
         </b-col>
         <b-col sm="12" md="10">

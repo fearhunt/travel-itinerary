@@ -124,7 +124,7 @@
             <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.itinId}`">
               <b-card no-body class="mt-2" :class="(index < (popularItineraries.length - 1)) ? 'mb-5' : ''">
                 <b-row no-gutters>
-                  <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${$axios.defaults.baseURL + 'images/' + popular.itemPerDay[0].item[0].destinationId.imagePath || require('~/assets/img/attention/location.png')})` }"></b-col>
+                  <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${$axios.defaults.baseURL + 'images/' + popular.location.imagePath || require('~/assets/img/attention/location.png')})` }"></b-col>
                   <b-col sm="12" md="9">
                     <b-card-body>
                       <b-row>
@@ -151,7 +151,7 @@
                               <i class="fa fa-shield-alt" aria-hidden="true"></i>
                               Approved
                             </span>
-                            <span v-for="(tag, index) in tags" :key="index" class="tags">
+                            <span v-for="(tag, index) in popular.tags" :key="index" class="tags">
                               {{ tag | capitalizeFirstLetterOfEachWord() }}
                             </span>
                           </div>
@@ -213,7 +213,7 @@
             <p class="text-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex provident quod placeat accusamus dolore vel cupiditate, totam velit voluptate sed, at maiores ipsa fugiat voluptatum, quas laboriosam? Aliquam, accusantium dolorum!
             </p>
-            <nuxt-link to="/?page=login" class="btn btn-primary my-4">Start Making Itinerary</nuxt-link>
+            <nuxt-link to="/dashboard/create-itinerary" class="btn btn-primary my-4">Start Making Itinerary</nuxt-link>
           </b-col>
           <b-col sm="12" md="7" class="my-auto d-sm-none d-md-block">
             <b-img :src="require('~/assets/img/benefit.png')" fluid rounded></b-img>
@@ -283,11 +283,6 @@
           { title: "Nature", imgURL: require("~/assets/img/categories/4.jpg"), url: "/?page=category" },
           { title: "Trending Places", imgURL: require("~/assets/img/categories/5.jpg"), url: "/?page=category" },
           { title: "See More", imgURL: require("~/assets/img/categories/6.jpg"), url: "/?page=category" }
-        ],
-        // TODO Fetch from API
-        tags: [
-          "staycation",
-          "historical"
         ],
         hooperSettings: {
           breakpoints: {

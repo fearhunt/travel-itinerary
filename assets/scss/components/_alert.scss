@@ -1,0 +1,9 @@
+.alert {
+  position: absolute;
+  top: 7.5rem;
+  right: 1rem;
+  
+  @media (min-width: 992px) {
+    max-width: 30%;
+  }
+}

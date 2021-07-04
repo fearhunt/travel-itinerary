@@ -71,6 +71,16 @@
     }
   }
 
+  &.btn-modal-close {
+    padding: 0.25rem;
+    border: $itin-border $primary;
+    border-radius: 100%;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: $primary;
+    font-weight: bold;
+  }
+
   .nav-link {
     padding: 0.25rem;
   }

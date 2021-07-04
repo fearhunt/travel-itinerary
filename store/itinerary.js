@@ -1,7 +1,8 @@
 export const state = () => ({
   itineraries: null,
   popularItineraries: null,
-  itineraryDetail: null
+  itineraryDetail: null,
+  tempItinerary: null
 });
 
 export const mutations = {
@@ -15,6 +16,10 @@ export const mutations = {
 
   setItineraryDetail(state, payload) {
     state.itineraryDetail = payload;
+  },
+
+  setTempItinerary(state, payload) {
+    state.tempItinerary = payload;
   }
 };
 
@@ -45,5 +50,9 @@ export const actions = {
       }).catch(err => {
         console.error(err.response.data);
       });
-  }
+  },
+
+  updateTempItinerary({ commit }, data = null) {
+    commit("setTempItinerary", data);
+  }  
 };

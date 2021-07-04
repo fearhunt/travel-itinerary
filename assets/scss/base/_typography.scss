@@ -38,6 +38,10 @@ body {
     color: $black !important;
   }
 
+  &-grey {
+    color: $grey !important;
+  }
+
   &-ellipsis {
     text-overflow: ellipsis;
     display: -webkit-box;

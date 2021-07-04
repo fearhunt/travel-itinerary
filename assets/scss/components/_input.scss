@@ -30,7 +30,27 @@
   }
 }
 
+.form-input-simplified-line {
+  outline: 0;
+  padding: 1.25rem 0 !important;
+  border: 0;
+  border-bottom: $itin-border $primary;
+  border-radius: 0 !important;
+
+  &:focus {
+    box-shadow: 0;
+  }
+}
+
 .custom-select {
   border-radius: $itin-border-radius;
   cursor: pointer;
+}
+
+.b-form-timepicker {
+  &.hidden {
+    > .btn {
+      display: none;
+    }
+  }
 }
