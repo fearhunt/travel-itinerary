@@ -8,9 +8,7 @@
   }
 
   .card-img {
-    &-top {
-      border-radius: $itin-border-radius;
-    }
+    border-radius: $itin-border-radius;
   }
 
   &.bg-primary {

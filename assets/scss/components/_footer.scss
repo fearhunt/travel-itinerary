@@ -2,6 +2,11 @@
   margin-top: auto;
   padding: 2rem;
 
+  .brand-title {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
   .footer-nav {
     padding: 0;
 
@@ -11,9 +16,14 @@
       .nav-link {
         color: white;
         text-decoration: none;
-        font-size: 0.9rem;
+        margin-left: auto;
+        margin-right: auto;
         padding: 0.25rem 0;
         width: fit-content;
+
+        @media (max-width: 992px) {
+          margin-left: 0;
+        }
 
         &::before {
           content: '>';
@@ -53,7 +63,11 @@
   .nav-title {
     font-weight: bold;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 992px) {
+      margin-bottom: 1rem;
+    }
   }
 
   .img-fluid {

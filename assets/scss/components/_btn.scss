@@ -19,12 +19,17 @@
       background-color: $primary !important;
       border-color: $primary !important;
     }
+
+    &:hover {
+      background-color: rgba($primary, 0.85);
+      border-color: rgba($primary, 0.85);
+    }
   }
 
   &.btn-secondary {
     background-color: $secondary;
     border-color: $secondary;
-    color: white;
+    color: $black;
 
     &:active {
       background-color: secondary !important;
@@ -33,6 +38,8 @@
   }
 
   &.btn-light {
+    color: $primary;
+
     &.nav-item {
       padding: 0.25rem 0.75rem;
     }

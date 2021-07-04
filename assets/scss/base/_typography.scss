@@ -1,5 +1,6 @@
 body {
   font-family:
+    'Poppins',
     'Montserrat',
     'Source Sans Pro',
     -apple-system,
@@ -29,6 +30,10 @@ body {
     color: $secondary !important;
   }
 
+  &-red {
+    color: $red !important;
+  }
+
   &-ellipsis {
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -48,7 +53,7 @@ body {
 }
 
 .intro-index {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: $secondary;
 }
