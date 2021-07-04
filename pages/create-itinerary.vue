@@ -42,51 +42,19 @@
 
     data() {
       return {
-        intros: [
-          { title: "It's easy", description: "With Itin, we've make it easier for you to just GO." },
-          { title: "It's safe", description: "I don't know how, but we will make sure it is." },
-          { title: "It's fun", description: " We all need vacation, bruh." },
-        ]
+      
       }
-    },
-
-    methods: {
-      setNavbarOnScroll() {
-        window.onscroll = () => {
-          if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
-            document.querySelector(".navbar").classList.remove("transparent");
-          } else {
-            document.querySelector(".navbar").classList.add("transparent");
-          }
-        }
-      }
-    },
-
-    beforeMount() {
-      window.addEventListener("scroll", this.setNavbarOnScroll);
-    },
-
-    beforeDestroy() {
-      window.removeEventListener("scroll", this.setNavbarOnScroll);
     },
 
     mounted() {
-      this.$store.dispatch("itinerary/getAllItineraries")
-        .then(() => {
-          this.$store.dispatch("itinerary/getAllPopularItineraries");
-        });
+    
     }
   }
 </script>
 
 <style lang="scss">
   #header {
-    height: 350px;
-    margin: 0;
-    padding: 0;
-
     .container, .row-header {
-      height: 350px;
       align-content: flex-end;
     }
 

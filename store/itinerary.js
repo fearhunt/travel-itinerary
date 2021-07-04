@@ -39,9 +39,9 @@ export const actions = {
   },
 
   async getItineraryDetail({ commit }, id) {
-    await this.$axios.get(`api/itineraries/get/${id}`)
+    await this.$axios.get(`itin/${id}`)
       .then(res => {
-        commit("setItineraryDetail", res.data);
+        commit("setItineraryDetail", res.data.data);
       }).catch(err => {
         console.error(err.response.data);
       });
