@@ -1,3 +1,11 @@
+.form-group {
+  label {
+    color: $black;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}
+
 .input-group {
   .form-control {
     border-radius: $itin-border-radius;
@@ -20,4 +28,9 @@
       }
     }
   }
+}
+
+.custom-select {
+  border-radius: $itin-border-radius;
+  cursor: pointer;
 }

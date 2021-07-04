@@ -29,7 +29,7 @@
               <b-form @submit.prevent="onSubmit()"> <!-- Inline not working -->
                 <b-row>
                   <b-col sm="12" md="9">
-                    <b-form-input required autocomplete="on" v-model="email" type="email" placeholder="Email"></b-form-input>
+                    <b-form-input required autocomplete="on" v-model="form.email" type="email" placeholder="Email"></b-form-input>
                   </b-col>
                   <b-col sm="12" md="3" class="my-2 my-md-auto">
                     <b-button type="submit" variant="secondary" class="text-white">Subscribe</b-button>
@@ -58,14 +58,16 @@
           { title: "Privacy Policy", url: "/?page=here" },
           { title: "Terms & Conditions", url: "/?page=here" },
         ],
-        email: ""
+        form: {
+          email: ""
+        }
       }
     },
 
     methods: {
       onSubmit() {
         // TODO Subscribe letter
-        this.$store.dispatch("alert/displaySuccess", { message: `Email ${this.email} successfully subscribed` });
+        this.$store.dispatch("alert/displaySuccess", { message: `Email ${this.form.email} successfully subscribed` });
         this.email = "";
       }
     }
