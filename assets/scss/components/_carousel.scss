@@ -1,0 +1,17 @@
+.hooper {
+  .hooper-indicator {
+    width: 1.5rem;
+    height: 0.5rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    transition: $itin-transition;
+
+    &.is-active {
+      background-color: $primary;
+    }
+
+    &:hover:not(.is-active) {
+      background-color: rgba($primary, 0.6);
+    }
+  }
+}

@@ -32,7 +32,7 @@
                     <b-form-input required autocomplete="on" v-model="email" type="email" placeholder="Email"></b-form-input>
                   </b-col>
                   <b-col sm="12" md="3" class="my-2 my-md-auto">
-                    <b-button type="submit" variant="secondary">Subscribe</b-button>
+                    <b-button type="submit" variant="secondary" class="text-white">Subscribe</b-button>
                   </b-col>
                 </b-row>
               </b-form>
