@@ -69,3 +69,29 @@ section {
   }
 }
 
+.itinerary-information {
+  font-size: 0.75rem;
+  color: $grey;
+  margin: 0.5rem 0;
+  
+  > div, > span {
+    display: inline-block;
+    margin-right: 0.25rem;
+
+    &:not(:first-child) {
+      margin-left: 0.25rem;
+    }
+  }
+
+  .fa {
+    margin-right: 0.15rem;
+  }
+}
+
+.trusted-icon {
+  margin-right: 0.25rem;
+  padding: 0.125rem;
+  border: 0.125rem solid;
+  border-radius: 100%;
+  font-size: 0.6rem;
+}

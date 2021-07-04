@@ -20,9 +20,9 @@ export const mutations = {
 
 export const actions = {
   async getAllItineraries({ commit }) {
-    await this.$axios.get("/")
+    await this.$axios.get("/itin/all")
       .then(res => {
-        commit("setItineraries", res.data);
+        commit("setItineraries", res.data.data);
       }).catch(err => {
         console.error(err.response.data);
       });

@@ -5,15 +5,18 @@
         <b-row>
           <b-col sm="12" md="6" class="mt-auto mb-md-auto">
             <h1>
-              Find your <span class="font-weight-bold">Best <br>
-              Vacation Itinerary</span><br>
+              Find Your Best<br>
+              <span class="font-weight-bold">Vacation Itinerary</span> <br>
               With Us.
             </h1>
-            <p><span style="font-weight: bold; font-size: 2rem">*</span>Click here for more information about covid regulation</p>
+            <p>
+              <span class="font-weight-bold">*</span>
+              Click here for more information about COVID-19 regulation
+            </p>
           </b-col>
           <b-col sm="12" md="6" class="mt-md-auto mb-auto">
             <b-card>
-              <nuxt-link to="/" class="btn btn-primary float-right">Go StayCation</nuxt-link>
+              <nuxt-link to="/" class="btn btn-secondary float-right">Search Itinerary</nuxt-link>
             </b-card>
           </b-col>
         </b-row>
@@ -31,12 +34,12 @@
             <b-card>
               <b-row>
                 <b-col cols="3" class="my-auto">
-                  <h2 class="intro-index text-center">
+                  <h2 class="intro-index text-center" :class="((index % 2) == 1) ? 'text-red' : ''">
                     {{ index + 1 }}
                   </h2>
                 </b-col>
-                <b-col cols="9">
-                  <h5 class="font-weight-bold mb-1">
+                <b-col cols="9" class="my-auto">
+                  <h5 class="font-weight-bold mb-1 text-black">
                     {{ intro.title }}
                   </h5>
                   <p class="text-description">
@@ -54,7 +57,7 @@
       <b-container>
         <b-row>
           <b-col cols="12" class="mb-4">
-            <h1 class="text-title">Feeling for a Staycation? We got you!</h1>
+            <h1 class="text-title">Feeling for a staycation? We got you!</h1>
           </b-col>
           <b-col cols="12">
             <b-card bg-variant="primary-light">
@@ -72,27 +75,104 @@
             <h1 class="text-title">Most Popular Itinerary</h1>
           </b-col>
           <b-col cols="12" v-if="popularItineraries">
-            <b-card v-for="(popular, index) in popularItineraries" :key="index" class="mt-2 mb-5">
+            <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.id}`">
+              <b-card no-body class="mt-2 mb-5">
+                <b-row no-gutters>
+                  <b-col sm="12" md="3" class="my-auto">
+                    <b-card-img :src="popular.img || require('~/assets/img/attention-location.png')" :alt="popular.name" class="rounded"></b-card-img>
+                  </b-col>
+                  <b-col sm="12" md="9">
+                    <b-card-body>
+                      <b-row>
+                        <b-col sm="12" md="8">
+                          <h5 class="mb-1 text-black">
+                            {{ popular.name }}
+                          </h5>
+                          <div class="itinerary-information">
+                            <div>
+                              <i class="fa fa-repeat fa-flip-horizontal" aria-hidden="true"></i>
+                              <span>
+                                {{ (popular.totalDay > 1) ? `${popular.totalDay} days` : "1 day" }}
+                              </span>
+                            </div>
+                            <div>
+                              <i class="fa fa-bus" aria-hidden="true"></i>
+                              <span>
+                                {{ ((popular.item).length > 1) ? `${(popular.item).length} stops` : "1 stop" }}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="itinerary-information">
+                            <span class="tags bg-primary mr-0">
+                              <i class="fa fa-shield-alt" aria-hidden="true"></i>
+                              Approved
+                            </span>
+                            <span v-for="(tag, index) in tags" :key="index" class="tags">
+                              {{ tag | capitalizeFirstLetterOfEachWord() }}
+                            </span>
+                          </div>
+                          <p class="text-description">
+                            {{ popular.desc }}
+                          </p>
+                        </b-col>
+                        <b-col sm="12" md="4" class="my-2 my-md-auto text-md-right">
+                          <small>Created by</small>
+                          <p class="mb-0">
+                            {{ popular.contactPerson }}
+                          </p>
+                          <p class="my-1 text-primary font-weight-bold">
+                            <i class="fa fa-star trusted-icon" aria-hidden="true"></i>
+                            Trusted Traveller
+                          </p>
+                        </b-col>
+                      </b-row>
+                    </b-card-body>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </nuxt-link>
+          </b-col>
+        </b-row>
+      </b-container>
+    </section>
 
+    <section id="categories">
+      <b-container>
+        <b-row>
+          <b-col cols="12">
+            <h1 class="text-title">Browse our itinerary categories</h1>
+          </b-col>
+          <b-col cols="12">
+            <b-card bg-variant="primary-light">
+              <b-row>
+                <b-col v-for="(category, index) in categories" :key="index" cols="6" class="my-2">
+                  <nuxt-link :to="category.url">
+                    <b-card overlay :img-src="category.imgURL">
+                      <h4 class="text-white category-title">
+                        {{ category.title }}
+                      </h4>
+                    </b-card>
+                  </nuxt-link>
+                </b-col>
+              </b-row>
             </b-card>
           </b-col>
         </b-row>
       </b-container>
     </section>
 
-    <section id="benefit">
+    <section id="benefit" class="bg-primary-light mb-0">
       <b-container>
         <b-row>
-          <b-col sm="12" md="5" class="mb-4">
-            <h1 class="text-title">Share your itinerary, and get promos</h1>
+          <b-col sm="12" md="5" class="mb-4 my-md-auto">
+            <h1 class="text-title">Share your itinerary, and get promos!</h1>
             <p class="text-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex provident quod placeat accusamus dolore vel cupiditate, totam velit voluptate sed, at maiores ipsa fugiat voluptatum, quas laboriosam? Aliquam, accusantium dolorum!
             </p>
+            <nuxt-link to="/?page=login" class="btn btn-primary my-4">Start Making Itinerary</nuxt-link>
           </b-col>
-          <b-col sm="12" md="7" class="my-auto">
-            <b-card bg-variant="primary" style="height: 300px">
-
-            </b-card>
+          <b-col sm="12" md="7" class="my-auto d-sm-none d-md-block">
+            <b-img :src="require('~/assets/img/benefit.png')" fluid rounded></b-img>
           </b-col>
         </b-row>
       </b-container>
@@ -114,6 +194,19 @@
           { title: "It's easy", description: "With Itin, we've make it easier for you to just GO." },
           { title: "It's safe", description: "I don't know how, but we will make sure it is." },
           { title: "It's fun", description: " We all need vacation, bruh." },
+        ],
+        categories: [
+          { title: "Outdoor", imgURL: require("~/assets/img/categories/1.jpg"), url: "/?page=category" },
+          { title: "Healing", imgURL: require("~/assets/img/categories/2.jpg"), url: "/?page=category" },
+          { title: "Cultural", imgURL: require("~/assets/img/categories/3.jpg"), url: "/?page=category" },
+          { title: "Nature", imgURL: require("~/assets/img/categories/4.jpg"), url: "/?page=category" },
+          { title: "Trending Places", imgURL: require("~/assets/img/categories/5.jpg"), url: "/?page=category" },
+          { title: "See More", imgURL: require("~/assets/img/categories/6.jpg"), url: "/?page=category" }
+        ],
+        // TODO Fetch from API
+        tags: [
+          "staycation",
+          "historical"
         ]
       }
     },
@@ -163,6 +256,18 @@
 
     @media (max-width: 768px) {
       min-height: 100vh;
+    }
+  }
+
+  #categories {
+    .category-title {
+      position: absolute;
+      bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.7rem;
+        text-align: center;
+      }
     }
   }
 </style>

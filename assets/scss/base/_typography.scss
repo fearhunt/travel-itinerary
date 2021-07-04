@@ -1,5 +1,6 @@
 body {
   font-family:
+    'Poppins',
     'Montserrat',
     'Source Sans Pro',
     -apple-system,
@@ -13,7 +14,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: $black;
+  color: $grey;
 }
 
 .text {
@@ -27,6 +28,14 @@ body {
 
   &-secondary {
     color: $secondary !important;
+  }
+
+  &-red {
+    color: $red !important;
+  }
+
+  &-black {
+    color: $black !important;
   }
 
   &-ellipsis {
@@ -48,11 +57,16 @@ body {
 }
 
 .intro-index {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: $secondary;
 }
 
 .big-size {
   font-size: 3.5rem !important;
+}
+a {
+  .card {
+    color: $grey;
+  }
 }
