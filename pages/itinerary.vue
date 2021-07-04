@@ -32,11 +32,94 @@
 
     <section id="section-map">
       <b-container>
-        <b-row class="row-map">
+        <b-row>
           <b-col cols="12">
-            <b-card bg-variant="primary-light" style="height:400px; box-shadow:none" class="align-items-center">
-              <b-img :src="require('~/assets/img/map-journey.png')" style="height:400px" class="mb-3"></b-img>
+            <b-card bg-variant="primary-light" style="height:400px" class="align-items-center">
+              <b-img :src="require('~/assets/img/map-journey.png')" style="height:370px" class="mb-3"></b-img>
             </b-card>
+          </b-col>
+        </b-row>
+      </b-container>
+    </section>
+
+    <section id="view-itinerary">
+      <b-container>
+        <b-row>
+          <b-col cols="12">
+            <b-col cols="12" class="mb-4">
+              <h3 class="font-weight-bold">Your Itinerary</h3>
+              <p>You can copy and edit this itinerary accordingly</p>
+            </b-col>
+            <section class="lists-container">
+              <div class="list">
+                <h3 class="list-title">Day 1</h3>
+                <ul class="list-items">
+                  <li>
+                    <h5>Borobudur</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Taman Sari</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <button class="add-card-btn btn"><i class='fa fa-plus-circle'></i>Add activity</button>
+                </ul>
+              </div>
+              <div class="list">
+                <h3 class="list-title">Day 1</h3>
+                <ul class="list-items">
+                  <li>
+                    <h5>Borobudur</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Taman Sari</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Prambanan</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <button class="add-card-btn btn"><i class='fa fa-plus-circle'></i>Add activity</button>
+                </ul>
+              </div>
+              <div class="list">
+                <h3 class="list-title">Day 1</h3>
+                <ul class="list-items">
+                  <li>
+                    <h5>Borobudur</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Taman Sari</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Prambanan</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <button class="add-card-btn btn"><i class='fa fa-plus-circle'></i>Add activity</button>
+                </ul>
+              </div>
+              <div class="list">
+                <h3 class="list-title">Day 1</h3>
+                <ul class="list-items">
+                  <li>
+                    <h5>Borobudur</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Taman Sari</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <li>
+                    <h5>Prambanan</h5>
+                    <p>Time: 10.00-13.00</p>
+                  </li>
+                  <button class="add-card-btn btn"><i class='fa fa-plus-circle'></i>Add activity</button>
+                </ul>
+              </div>
+            </section>
           </b-col>
         </b-row>
       </b-container>
@@ -106,17 +189,4 @@
       min-height: 100vh;
     }
   }
-  // #section-map {
-  //   height: 400px;
-  //   margin: 0;
-  //   padding: 0;
-
-  //   .container, .row-map {
-  //     height: 400px;
-  //   }
-
-  //   @media (max-width: 768px) {
-  //     min-height: 100vh;
-  //   }
-  // }
 </style>
