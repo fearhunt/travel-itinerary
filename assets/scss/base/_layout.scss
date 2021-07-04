@@ -1,6 +1,6 @@
 section {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 1.5rem;
 
   @media (max-width: 768px) {
@@ -72,10 +72,11 @@ section {
 .itinerary-information {
   font-size: 0.75rem;
   color: $grey;
-  margin: 0.5rem 0;
   
   > div, > span {
     display: inline-block;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
     margin-right: 0.25rem;
 
     &:not(:first-child) {

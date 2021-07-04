@@ -16,7 +16,21 @@
           </b-col>
           <b-col sm="12" md="6" class="mt-md-auto mb-auto">
             <b-card>
-              <nuxt-link to="/" class="btn btn-secondary float-right">Search Itinerary</nuxt-link>
+              <b-form @submit.prevent="onSubmit()" v-if="locations">
+                <b-row>
+                  <b-col cols="12">
+                    <b-form-group label="Location" label-for="location">
+                      <b-form-select id="location" v-model="form.location" :options="locationOptions" required></b-form-select>
+                    </b-form-group>
+                    <b-form-group label="Duration" label-for="duration" class="my-2">
+                      <b-form-select id="duration" v-model="form.duration" :options="durationOptions" required></b-form-select>
+                    </b-form-group>
+                  </b-col>
+                  <b-col cols="12" class="mt-4">
+                    <b-button type="submit" class="btn btn-secondary float-right">Search Itinerary</b-button>
+                  </b-col>
+                </b-row>
+              </b-form>
             </b-card>
           </b-col>
         </b-row>
@@ -60,8 +74,33 @@
             <h1 class="text-title">Feeling for a staycation? We got you!</h1>
           </b-col>
           <b-col cols="12">
-            <b-card bg-variant="primary-light">
-              
+            <b-card no-body bg-variant="primary-light">
+              <b-row>
+                <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${require('~/assets/img/attention/holder.png')})` }"></b-col>
+                <b-col sm="12" md="9" v-if="locations">
+                  <b-card-body class="px-0 px-md-4">
+                    <b-button @click.prevent="slidePrev('carousel-locations')" variant="round" class="btn-slider left">
+                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </b-button>
+                    <b-button @click.prevent="slideNext('carousel-locations')" variant="round" class="btn-slider right">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </b-button>
+                    <hooper ref="carousel-locations" :settings="hooperSettings" class="h-100 my-0 px-0">
+                      <slide v-for="(location, index) in locations" :key="index" class="mx-3 mb-4">
+                        <b-card :img-src="`https://bibimbap1.herokuapp.com/images/${location.imagePath}` || require('~/assets/img/attention/location.png')" :img-alt="location.name" img-top class="shadow-none">
+                          <h5>
+                            {{ location.name }}
+                          </h5>
+                          <p class="text-description">
+                            {{ location.desc }}
+                          </p>
+                        </b-card>
+                      </slide>
+                      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+                    </hooper>
+                  </b-card-body>
+                </b-col>
+              </b-row>
             </b-card>
           </b-col>
         </b-row>
@@ -75,12 +114,10 @@
             <h1 class="text-title">Most Popular Itinerary</h1>
           </b-col>
           <b-col cols="12" v-if="popularItineraries">
-            <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.id}`">
-              <b-card no-body class="mt-2 mb-5">
+            <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.itinId}`">
+              <b-card no-body class="mt-2" :class="(index < (popularItineraries.length - 1)) ? 'mb-5' : ''">
                 <b-row no-gutters>
-                  <b-col sm="12" md="3" class="my-auto">
-                    <b-card-img :src="popular.img || require('~/assets/img/attention-location.png')" :alt="popular.name" class="rounded"></b-card-img>
-                  </b-col>
+                  <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${popular.img || require('~/assets/img/attention/location.png')})` }"></b-col>
                   <b-col sm="12" md="9">
                     <b-card-body>
                       <b-row>
@@ -111,7 +148,7 @@
                               {{ tag | capitalizeFirstLetterOfEachWord() }}
                             </span>
                           </div>
-                          <p class="text-description">
+                          <p class="text-description mt-2">
                             {{ popular.desc }}
                           </p>
                         </b-col>
@@ -148,9 +185,9 @@
                 <b-col v-for="(category, index) in categories" :key="index" cols="6" class="my-2">
                   <nuxt-link :to="category.url">
                     <b-card overlay :img-src="category.imgURL">
-                      <h4 class="text-white category-title">
+                      <h3 class="text-white category-title">
                         {{ category.title }}
-                      </h4>
+                      </h3>
                     </b-card>
                   </nuxt-link>
                 </b-col>
@@ -181,15 +218,52 @@
 </template>
 
 <script>
+  import { Hooper, Slide, Pagination as HooperPagination } from "hooper";
+  import "hooper/dist/hooper.css";
+
   export default {
+    components: {
+      Hooper,
+      Slide,
+      HooperPagination
+    },
+
     computed: {
       popularItineraries() {
         return this.$store.state.itinerary.popularItineraries;
+      },
+
+      locations() {
+        return this.$store.state.location.locations;
+      },
+
+      locationOptions() {
+        const options = [];
+
+        (this.locations).forEach(location => {
+          options.push({
+            value: location.id,
+            text: location.name
+          });
+        });
+
+        return options;
       }
     },
 
     data() {
       return {
+        form: {
+          location: "",
+          duration: ""
+        },
+        durationOptions: [
+          { value: "1", text: "1 Day 1 Night" },
+          { value: "2", text: "2 Day 1 Night" },
+          { value: "3", text: "2 Day 2 Night" },
+          { value: "4", text: "3 Day 1 Night" },
+          { value: "5", text: "3 Day 2 Night" },
+        ],
         intros: [
           { title: "It's easy", description: "With Itin, we've make it easier for you to just GO." },
           { title: "It's safe", description: "I don't know how, but we will make sure it is." },
@@ -207,7 +281,21 @@
         tags: [
           "staycation",
           "historical"
-        ]
+        ],
+        hooperSettings: {
+          breakpoints: {
+            640: {
+              itemsToShow: 2
+            },
+            320: {
+              itemsToShow: 1
+            }
+          },
+          autoPlay: true,
+          centerMode: true,
+          infiniteScroll: true,
+          transition: 500
+        },
       }
     },
 
@@ -220,6 +308,19 @@
             document.querySelector(".navbar").classList.add("transparent");
           }
         }
+      },
+
+      slideNext(carousel) {
+        this.$refs[carousel].slideNext();
+      },
+
+      slidePrev(carousel) {
+        this.$refs[carousel].slidePrev();
+      },
+
+      onSubmit() {
+        // TODO Search itinerary
+        console.log("Search")
       }
     },
 
@@ -236,6 +337,7 @@
         .then(() => {
           this.$store.dispatch("itinerary/getAllPopularItineraries");
         });
+      this.$store.dispatch("location/getAllLocations");
     }
   }
 </script>
@@ -251,7 +353,7 @@
     color: white;
 
     .container, .row {
-      height: 100vh;
+      height: 100%;
     }
 
     @media (max-width: 768px) {

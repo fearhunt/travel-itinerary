@@ -6,8 +6,7 @@
     
     <b-navbar-toggle target="nav-collapse">
       <template #default="{ expanded }">
-        <i v-if="expanded" class="fa fa-chevron-up" aria-hidden="true"></i>
-        <i v-else class="fa fa-chevron-down" aria-hidden="true"></i>
+        <i class="fa" :class="expanded ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
       </template>
     </b-navbar-toggle>
 

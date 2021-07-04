@@ -8,6 +8,10 @@
   }
 
   .card-img {
+    &-top, &-left {
+      border-radius: $itin-border-radius;
+    }
+
     border-radius: $itin-border-radius;
   }
 
@@ -18,8 +22,18 @@
   &.bg-primary-light {
     box-shadow: none !important;
   }
-}
 
+  .img-display-card {
+    position: relative; 
+    background-size: cover; 
+    background-position: center center; 
+    border-radius: $itin-border-radius;
+  
+    @media (max-width: 768px) {
+      min-height: 10rem;
+    }
+  }
+}
 
 .lists-container {
   display: flex;
