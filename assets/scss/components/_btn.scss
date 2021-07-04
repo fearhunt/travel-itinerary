@@ -53,4 +53,18 @@
   .nav-link {
     padding: 0.25rem;
   }
+
+  &.btn-like {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: $black;
+    i {
+      padding: 0.75rem 0.75rem;
+      border-radius: $itin-border-radius; 
+      margin-right: 0.75rem;
+      color: white;
+    }
+  }
 }

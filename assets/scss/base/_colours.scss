@@ -1,6 +1,27 @@
 $primary: #547AF6;
 $secondary: #FFA600;
-$primary-light: #A6D4FF;
+$primary-light: #F0F9FF;
 $red: #FF636D;
 $grey: #65676E;
 $black: #2B2C30;
+
+.color{
+    &-blue {
+      color: $primary;
+    }
+    &-pink {
+      color: $red;
+    }
+    &-yellow {
+      color: $secondary;
+    }
+    &-bg-blue {
+      background-color: $primary;
+    }
+    &-bg-pink {
+      background-color: $red;
+    }
+    &-bg-yellow {
+      background-color: $secondary;
+    }
+  }

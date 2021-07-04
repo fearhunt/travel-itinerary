@@ -3,14 +3,15 @@
     <section id="jumbotron">
       <b-container>
         <b-row>
-          <b-col sm="12" md="5" class="mt-auto mb-md-auto">
+          <b-col sm="12" md="6" class="mt-auto mb-md-auto">
             <h1>
-              Book Your Next <br>
-              <span class="font-weight-bold">Safe Staycation</span> <br>
+              Find your <span class="font-weight-bold">Best <br>
+              Vacation Itinerary</span><br>
               With Us.
             </h1>
+            <p><span style="font-weight: bold; font-size: 2rem">*</span>Click here for more information about covid regulation</p>
           </b-col>
-          <b-col sm="12" md="7" class="mt-md-auto mb-auto">
+          <b-col sm="12" md="6" class="mt-md-auto mb-auto">
             <b-card>
               <nuxt-link to="/" class="btn btn-primary float-right">Go StayCation</nuxt-link>
             </b-card>
@@ -24,6 +25,7 @@
         <b-row>
           <b-col cols="12" class="mb-4">
             <h1 class="text-title">With Us, You're Safe</h1>
+            <p>In the COVID-19 pandemic, we’re making sure to help you plan the safest vacation.</p>
           </b-col>
           <b-col v-for="(intro, index) in intros" :key="index" sm="12" md="4" class="my-2">
             <b-card>
@@ -52,7 +54,7 @@
       <b-container>
         <b-row>
           <b-col cols="12" class="mb-4">
-            <h1 class="text-title">Attention, Staycation!</h1>
+            <h1 class="text-title">Feeling for a Staycation? We got you!</h1>
           </b-col>
           <b-col cols="12">
             <b-card bg-variant="primary-light">
