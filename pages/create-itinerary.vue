@@ -42,11 +42,7 @@
 
     data() {
       return {
-        intros: [
-          { title: "It's easy", description: "With Itin, we've make it easier for you to just GO." },
-          { title: "It's safe", description: "I don't know how, but we will make sure it is." },
-          { title: "It's fun", description: " We all need vacation, bruh." },
-        ]
+        
       }
     },
 

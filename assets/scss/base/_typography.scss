@@ -70,3 +70,23 @@ a {
     color: $grey;
   }
 }
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.icon-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  padding-top: 0.1rem;
+}
+
+.activity-info{
+  .icon-title {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-weight: 600;
+  }
+}
