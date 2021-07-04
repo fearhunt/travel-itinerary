@@ -5,7 +5,7 @@
         <b-row>
           <b-col cols="12" class="mt-5">
             <b-row>
-              <i class='far fa-clock mr-2 icon-title'></i>
+              <i class='far fa-calendar-alt mr-2 icon-title'></i>
               <b-col>
                 <h3 class="font-weight-bold">Activity Title</h3> 
                 <p>in Day 1, Jogja Trip</p>
@@ -14,19 +14,19 @@
             </b-row>
           </b-col>
           <b-col cols="12" class="mt-3 activity-info">
-            <b-row>
-              <i class='far fa-clock mr-2 icon-title'></i>
+            <b-row class="row-activity">
+              <i class='far fa-edit mr-2 icon-title'></i>
               <b-col>
                 <h4>Description</h4> 
-                <p>Add a little more description about the activity.</p>
+                <b-form-textarea id="description" rows="3" v-model="text" placeholder="Add a little more description about the activity." type="text"></b-form-textarea>
               </b-col>
             </b-row>
-            <b-row>
-              <i class='far fa-clock mr-2 icon-title'></i>
+            <b-row class="row-activity">
+              <i class='far fa-map mr-2 icon-title'></i>
               <b-col>
-                <h4>Destination</h4> 
-                <nuxt-link>
-                  <b-card no-body class="mt-2 mb-5">
+                <h4 class="mb-2">Destination</h4> 
+                <nuxt-link to="/">
+                  <b-card bg-variant="primary-light" no-body>
                     <b-row no-gutters>
                       <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: 'url(' + require('@/assets/img/destinations/1.jpg') + ')'}"></b-col>
                       <b-col sm="12" md="9">
@@ -79,6 +79,27 @@
                     </b-row>
                   </b-card>
                 </nuxt-link>
+              </b-col>
+            </b-row>
+            <b-row class="row-activity">
+              <i class='fas fa-car mr-2 icon-title'></i>
+              <b-col>
+                <h4>Transportation</h4> 
+                <p>List of available transportation option:</p>
+                <b-form-textarea id="description" rows="2" v-model="text" placeholder="User can add contact for car rental, or travel and also write a note about useful tips for traveller with their own personal
+vehicle, e.g. the small is too small so car cannot enter, etc." type="text"></b-form-textarea>
+              </b-col>
+            </b-row>
+            <b-row class="row-activity">
+              <i class='far fa-user-circle mr-2 icon-title'></i>
+              <b-col>
+                <h4>Guide</h4> 
+              </b-col>
+            </b-row>
+            <b-row class="row-activity">
+              <i class='fas fa-coins mr-2 icon-title'></i>
+              <b-col>
+                <h4>Total Budget</h4> 
               </b-col>
             </b-row>
           </b-col>

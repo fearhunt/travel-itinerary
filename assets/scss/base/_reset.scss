@@ -23,6 +23,12 @@ label {
   margin-bottom: 0;
 }
 
+textarea {
+  &.form-control {
+    border-radius: $itin-border-radius !important;
+  }
+}
+
 input {
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
