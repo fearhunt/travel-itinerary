@@ -87,13 +87,20 @@
                     </b-button>
                     <hooper ref="carousel-locations" :settings="hooperSettings" class="h-100 my-0 px-0">
                       <slide v-for="(location, index) in locations" :key="index" class="mx-3 mb-4">
-                        <b-card :img-src="`https://bibimbap1.herokuapp.com/images/${location.imagePath}` || require('~/assets/img/attention/location.png')" :img-alt="location.name" img-top class="shadow-none">
-                          <h5>
-                            {{ location.name }}
-                          </h5>
-                          <p class="text-description">
-                            {{ location.desc }}
-                          </p>
+                        <b-card no-body>
+                          <b-row no-gutters>
+                            <b-col cols="12" class="img-display-card" :style="{ backgroundImage: `url(${$axios.defaults.baseURL + 'images/' + location.imagePath || require('~/assets/img/attention/location.png')})`, minHeight: '12rem' }"></b-col>
+                            <b-col cols="12" class="px-0">
+                              <b-card-body>
+                                <h5>
+                                  {{ location.name }}
+                                </h5>
+                                <p class="text-description">
+                                  {{ location.desc }}
+                                </p>
+                              </b-card-body>
+                            </b-col>
+                          </b-row>
                         </b-card>
                       </slide>
                       <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -117,7 +124,7 @@
             <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.itinId}`">
               <b-card no-body class="mt-2" :class="(index < (popularItineraries.length - 1)) ? 'mb-5' : ''">
                 <b-row no-gutters>
-                  <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${popular.img || require('~/assets/img/attention/location.png')})` }"></b-col>
+                  <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: `url(${$axios.defaults.baseURL + 'images/' + popular.itemPerDay[0].item[0].destinationId.imagePath || require('~/assets/img/attention/location.png')})` }"></b-col>
                   <b-col sm="12" md="9">
                     <b-card-body>
                       <b-row>
@@ -135,7 +142,7 @@
                             <div>
                               <i class="fa fa-bus" aria-hidden="true"></i>
                               <span>
-                                {{ ((popular.item).length > 1) ? `${(popular.item).length} stops` : "1 stop" }}
+                                {{ (countItineraryDestination(popular.itemPerDay) > 1) ? `${countItineraryDestination(popular.itemPerDay)} stops` : "1 stop" }}
                               </span>
                             </div>
                           </div>
@@ -300,6 +307,16 @@
     },
 
     methods: {
+      countItineraryDestination(itineraryDestinations) {
+        let destinations = 0;
+
+        itineraryDestinations.forEach(destination => {
+          destinations += (destination.item).length;
+        });
+
+        return destinations;
+      },
+
       setNavbarOnScroll() {
         window.onscroll = () => {
           if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
