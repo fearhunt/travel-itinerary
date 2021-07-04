@@ -2,7 +2,8 @@ export const state = () => ({
   itineraries: null,
   popularItineraries: null,
   itineraryDetail: null,
-  tempItinerary: null
+  tempItinerary: null,
+  tempItineraryItem: null,
 });
 
 export const mutations = {
@@ -20,6 +21,10 @@ export const mutations = {
 
   setTempItinerary(state, payload) {
     state.tempItinerary = payload;
+  },
+
+  setTempItineraryItem(state, payload) {
+    state.tempItineraryItem = payload;
   }
 };
 
@@ -27,6 +32,9 @@ export const actions = {
   async getAllItineraries({ commit }) {
     await this.$axios.get("/itin/all")
       .then(res => {
+        // * Debugging
+        console.log(res.data.data);
+        // * Debugging
         commit("setItineraries", res.data.data);
       }).catch(err => {
         console.error(err.response.data);
@@ -54,5 +62,9 @@ export const actions = {
 
   updateTempItinerary({ commit }, data = null) {
     commit("setTempItinerary", data);
-  }  
+  },
+
+  updateTempItineraryItem({ commit }, data = null) {
+    commit("setTempItineraryItem", data);
+  }
 };

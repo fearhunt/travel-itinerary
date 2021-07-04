@@ -4,4 +4,9 @@
 
 .modal-content {
   border-radius: $itin-border-radius;
+  padding: 1rem 3rem;
+
+  @media (max-width: 768px) {
+    padding: 0.25rem 0.75rem;
+  }
 }

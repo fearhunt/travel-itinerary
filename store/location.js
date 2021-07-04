@@ -1,6 +1,6 @@
 export const state = () => ({
   locations: null,
-  locationDetail: null
+  tempLocation: null
 });
 
 export const mutations = {
@@ -12,8 +12,8 @@ export const mutations = {
     state.popularLocations = payload;
   },
 
-  setLocationDetail(state, payload) {
-    state.locationDetail = payload;
+  setTempLocation(state, payload) {
+    state.tempLocation = payload;
   }
 };
 
@@ -27,12 +27,7 @@ export const actions = {
       });
   },
 
-  async getLocationDetail({ commit }, id) {
-    await this.$axios.get(`api/locations/get/${id}`)
-      .then(res => {
-        commit("setLocationDetail", res.data);
-      }).catch(err => {
-        console.error(err.response.data);
-      });
-  }
+  updateTempLocation({ commit }, data = null) {
+    commit("setTempLocation", data);
+  }  
 };

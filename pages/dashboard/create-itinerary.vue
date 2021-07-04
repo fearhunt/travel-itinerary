@@ -54,6 +54,10 @@
 
       tempItinerary() {
         return this.$store.state.itinerary.tempItinerary;
+      },
+      
+      tempItineraryItem() {
+        return this.$store.state.itinerary.tempItineraryItem;
       }
     },
 
@@ -75,7 +79,6 @@
     },
 
     methods: {
-      
       addList() {
         this.form.itemPerDay.push([]);
       },
@@ -97,12 +100,18 @@
 
       showAlert() {
         this.dismissCountDown = this.dismissSecs;
-      },
+      }
     },
 
     mounted() {
+      this.$store.dispatch("location/getAllLocations");
       this.$root.$on("bv::modal::hidden", (bvEvent, modalId) => {
-        
+        if (modalId == "modal-add-activity") {
+          console.log(this.tempItineraryItem)
+          console.log(this.tempItinerary)
+          // this.form.itemPerDay[this.tempItinerary.day - 1].push(this.tempItineraryItem);
+          // console.log(this.form.itemPerDay[this.tempItinerary.day - 1])
+        }
       });
     }
   }
