@@ -23,6 +23,15 @@
     box-shadow: none !important;
   }
 
+  &.bg-primary-bordered {
+    border: 1px solid #ced4da;
+    box-shadow: none !important;
+    li {
+      list-style-type: none;
+      // padding: 0.5rem 0;
+    }
+  }
+
   .img-display-card {
     position: relative; 
     background-size: cover; 

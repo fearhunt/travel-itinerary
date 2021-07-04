@@ -1,8 +1,15 @@
 .form-group {
   label {
     color: $black;
-    font-weight: bold;
     margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+}
+
+.filter-tags {
+  padding: 0 !important;
+  label {
+    font-weight: 400 !important;
   }
 }
 

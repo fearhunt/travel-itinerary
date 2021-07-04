@@ -6,7 +6,7 @@
           <b-col sm="12" md="6" class="mt-auto mb-md-auto">
             <h1>
               Find Your Best<br>
-              <span class="font-weight-bold">Vacation Itinerary</span> <br>
+              <span class="font-weight-bold">Staycation Itinerary</span> <br>
               With Us.
             </h1>
             <p>
@@ -42,7 +42,7 @@
         <b-row>
           <b-col cols="12" class="mb-4">
             <h1 class="text-title">With Us, You're Safe</h1>
-            <p>In the COVID-19 pandemic, we’re making sure to help you plan the safest vacation.</p>
+            <p>In the COVID-19 pandemic, we’re making sure to help you plan the safest staycation.</p>
           </b-col>
           <b-col v-for="(intro, index) in intros" :key="index" sm="12" md="4" class="my-2">
             <b-card>
@@ -272,9 +272,9 @@
           { value: "5", text: "3 Day 2 Night" },
         ],
         intros: [
-          { title: "It's easy", description: "With Itin, we've make it easier for you to just GO." },
-          { title: "It's safe", description: "I don't know how, but we will make sure it is." },
-          { title: "It's fun", description: " We all need vacation, bruh." },
+          { title: "Plan", description: "With our database, we'll help you plan your best staycation" },
+          { title: "Browse", description: "Find the most intriguing staycation with our smart filter." },
+          { title: "Budgeting", description: "All your activities cost will be calculated automatically." },
         ],
         categories: [
           { title: "Outdoor", imgURL: require("~/assets/img/categories/1.jpg"), url: "/?page=category" },

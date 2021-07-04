@@ -35,7 +35,7 @@ export const actions = {
 
   async getAllPopularItineraries({ commit, state }) {
     function checkPopularItinerary(itinerary) {
-      return itinerary.isPopular == 0;
+      return itinerary.isPopular;
     };
 
     let data = (state.itineraries).filter(checkPopularItinerary);
