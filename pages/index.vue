@@ -87,7 +87,7 @@
                     </b-button>
                     <hooper ref="carousel-locations" :settings="hooperSettings" class="h-100 my-0 px-0">
                       <slide v-for="(location, index) in locations" :key="index" class="mx-3 mb-4">
-                        <b-card no-body>
+                        <b-card no-body class="shadow-none">
                           <b-row no-gutters>
                             <b-col cols="12" class="img-display-card" :style="{ backgroundImage: `url(${$axios.defaults.baseURL + 'images/' + location.imagePath || require('~/assets/img/attention/location.png')})`, minHeight: '12rem' }"></b-col>
                             <b-col cols="12" class="px-0">
