@@ -121,13 +121,12 @@
   
         this.$store.dispatch("itinerary/getItineraryDetail", this.itinId)
           .then(() => {
-            this.isFetched = true
+            this.isFetched = true;
           }).catch(() => {
             console.error("Fetching itinerary detail error");
             console.error(err);
           }).finally(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(), 500)
-  
+            setTimeout(() => this.$nuxt.$loading.finish(), 500);
           });
     })
     }

@@ -29,6 +29,42 @@ export const mutations = {
 };
 
 export const actions = {
+  async createItinerary({ commit, dispatch }, payload) {
+    const qs = require("querystring");
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    await this.$axios.post("/itin/create", qs.stringify(payload), config)
+      .then(res => {
+        if (res.status == "success") {
+          return res.itinId;
+        }
+      }).catch(err => {
+        console.error(err.response.data);
+      })
+  },
+
+  async createItemPerDayItinerary({ commit }, payload) {
+    const qs = require("querystring");
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    await this.$axios.post("/item/create", qs.stringify(payload), config)
+      .then(res => {
+        if (res.status == "success") {
+          return res.itinId;
+        }
+      }).catch(err => {
+        console.error(err.response.data);
+      })
+  },
+
   async getAllItineraries({ commit }) {
     await this.$axios.get("/itin/all")
       .then(res => {

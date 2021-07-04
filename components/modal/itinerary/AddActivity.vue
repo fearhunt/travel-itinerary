@@ -96,7 +96,7 @@
                 <i class='fas fa-coins mr-2 icon-title'></i>
                 Budget
               </h5>
-              <b-form-input required v-model="form.item.price" type="number" min="1" max="1000000000" placeholder="ex: 50000"></b-form-input>
+              <b-form-input required v-model="form.item.price" type="number" min="0" max="1000000000" placeholder="ex: 50000"></b-form-input>
             </div>
             <!-- <i class='far fa-user-circle mr-2 icon-title'></i>
               <h5>Guide</h5> -->

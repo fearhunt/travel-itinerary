@@ -19,6 +19,7 @@
     "hooper": "^0.3.4",
     "moment": "^2.29.1",
     "nuxt": "^2.15.7",
+    "querystring": "^0.2.1",
     "sweetalert": "^2.1.2"
   },
   "devDependencies": {
