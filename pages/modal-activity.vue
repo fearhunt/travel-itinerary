@@ -25,23 +25,60 @@
               <i class='far fa-clock mr-2 icon-title'></i>
               <b-col>
                 <h4>Destination</h4> 
-                <b-card>
-                  <b-row>
-                    <b-col cols="3" class="my-auto">
-                      <h2 class="intro-index text-center">
-                        Test
-                      </h2>
-                    </b-col>
-                    <b-col cols="9" class="my-auto">
-                      <h5 class="font-weight-bold mb-1 text-black">
-                        Test
-                      </h5>
-                      <p class="text-description">
-                        Test
-                      </p>
-                    </b-col>
-                  </b-row>
-                </b-card>
+                <nuxt-link>
+                  <b-card no-body class="mt-2 mb-5">
+                    <b-row no-gutters>
+                      <b-col sm="12" md="3" class="img-display-card" :style="{ backgroundImage: 'url(' + require('@/assets/img/destinations/1.jpg') + ')'}"></b-col>
+                      <b-col sm="12" md="9">
+                        <b-card-body>
+                          <b-row>
+                            <b-col sm="12" md="8">
+                              <h5 class="mb-1 text-black">
+                                Test
+                              </h5>
+                              <div class="itinerary-information">
+                                <div>
+                                  <i class="fa fa-repeat fa-flip-horizontal" aria-hidden="true"></i>
+                                  <span>
+                                    Test
+                                  </span>
+                                </div>
+                                <div>
+                                  <i class="fa fa-bus" aria-hidden="true"></i>
+                                  <span>
+                                    Test
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="itinerary-information">
+                                <span class="tags bg-primary mr-0">
+                                  <i class="fa fa-shield-alt" aria-hidden="true"></i>
+                                  Approved
+                                </span>
+                                <span v-for="(tag, index) in tags" :key="index" class="tags">
+                                  Test
+                                </span>
+                              </div>
+                              <p class="text-description mt-2">
+                                Test
+                              </p>
+                            </b-col>
+                            <b-col sm="12" md="4" class="my-2 my-md-auto text-md-right">
+                              <small>Created by</small>
+                              <p class="mb-0">
+                                Test
+                              </p>
+                              <p class="my-1 text-primary font-weight-bold">
+                                <i class="fa fa-star trusted-icon" aria-hidden="true"></i>
+                                Trusted Traveller
+                              </p>
+                            </b-col>
+                          </b-row>
+                        </b-card-body>
+                      </b-col>
+                    </b-row>
+                  </b-card>
+                </nuxt-link>
               </b-col>
             </b-row>
           </b-col>
