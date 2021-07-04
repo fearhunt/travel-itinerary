@@ -14,7 +14,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: $black;
+  color: $grey;
 }
 
 .text {
@@ -32,6 +32,10 @@ body {
 
   &-red {
     color: $red !important;
+  }
+
+  &-black {
+    color: $black !important;
   }
 
   &-ellipsis {
@@ -56,4 +60,10 @@ body {
   font-size: 4rem;
   font-weight: bold;
   color: $secondary;
+}
+
+a {
+  .card {
+    color: $grey;
+  }
 }

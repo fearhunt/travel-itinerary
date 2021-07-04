@@ -39,7 +39,7 @@
                   </h2>
                 </b-col>
                 <b-col cols="9" class="my-auto">
-                  <h5 class="font-weight-bold mb-1">
+                  <h5 class="font-weight-bold mb-1 text-black">
                     {{ intro.title }}
                   </h5>
                   <p class="text-description">
@@ -75,9 +75,62 @@
             <h1 class="text-title">Most Popular Itinerary</h1>
           </b-col>
           <b-col cols="12" v-if="popularItineraries">
-            <b-card v-for="(popular, index) in popularItineraries" :key="index" class="mt-2 mb-5">
-
-            </b-card>
+            <nuxt-link v-for="(popular, index) in popularItineraries" :key="index" :to="`/itinerary/${popular.id}`">
+              <b-card no-body class="mt-2 mb-5">
+                <b-row no-gutters>
+                  <b-col sm="12" md="3" class="my-auto">
+                    <b-card-img :src="popular.img || require('~/assets/img/attention-location.png')" :alt="popular.name" class="rounded"></b-card-img>
+                  </b-col>
+                  <b-col sm="12" md="9">
+                    <b-card-body>
+                      <b-row>
+                        <b-col sm="12" md="8">
+                          <h5 class="mb-1 text-black">
+                            {{ popular.name }}
+                          </h5>
+                          <div class="itinerary-information">
+                            <div>
+                              <i class="fa fa-repeat fa-flip-horizontal" aria-hidden="true"></i>
+                              <span>
+                                {{ (popular.totalDay > 1) ? `${popular.totalDay} days` : "1 day" }}
+                              </span>
+                            </div>
+                            <div>
+                              <i class="fa fa-bus" aria-hidden="true"></i>
+                              <span>
+                                {{ ((popular.item).length > 1) ? `${(popular.item).length} stops` : "1 stop" }}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="itinerary-information">
+                            <span class="tags bg-primary mr-0">
+                              <i class="fa fa-shield-alt" aria-hidden="true"></i>
+                              Approved
+                            </span>
+                            <span v-for="(tag, index) in tags" :key="index" class="tags">
+                              {{ tag | capitalizeFirstLetterOfEachWord() }}
+                            </span>
+                          </div>
+                          <p class="text-description">
+                            {{ popular.desc }}
+                          </p>
+                        </b-col>
+                        <b-col sm="12" md="4" class="my-2 my-md-auto text-md-right">
+                          <small>Created by</small>
+                          <p class="mb-0">
+                            {{ popular.contactPerson }}
+                          </p>
+                          <p class="my-1 text-primary font-weight-bold">
+                            <i class="fa fa-star trusted-icon" aria-hidden="true"></i>
+                            Trusted Traveller
+                          </p>
+                        </b-col>
+                      </b-row>
+                    </b-card-body>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </nuxt-link>
           </b-col>
         </b-row>
       </b-container>
@@ -143,12 +196,17 @@
           { title: "It's fun", description: " We all need vacation, bruh." },
         ],
         categories: [
-          { title: "Outdoor", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" },
-          { title: "Healing", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" },
-          { title: "Cultural", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" },
-          { title: "Nature", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" },
-          { title: "Trending Places", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" },
-          { title: "See More", imgURL: require("~/assets/img/jumbotron.png"), url: "/?page=category" }
+          { title: "Outdoor", imgURL: require("~/assets/img/categories/1.jpg"), url: "/?page=category" },
+          { title: "Healing", imgURL: require("~/assets/img/categories/2.jpg"), url: "/?page=category" },
+          { title: "Cultural", imgURL: require("~/assets/img/categories/3.jpg"), url: "/?page=category" },
+          { title: "Nature", imgURL: require("~/assets/img/categories/4.jpg"), url: "/?page=category" },
+          { title: "Trending Places", imgURL: require("~/assets/img/categories/5.jpg"), url: "/?page=category" },
+          { title: "See More", imgURL: require("~/assets/img/categories/6.jpg"), url: "/?page=category" }
+        ],
+        // TODO Fetch from API
+        tags: [
+          "staycation",
+          "historical"
         ]
       }
     },
