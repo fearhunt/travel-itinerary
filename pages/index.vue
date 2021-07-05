@@ -27,7 +27,7 @@
                     </b-form-group>
                   </b-col>
                   <b-col cols="12" class="mt-4">
-                    <b-button type="submit" class="btn btn-secondary float-right">Search Itinerary</b-button>
+                    <b-button type="submit" to="/search" class="btn btn-secondary float-right">Search Itinerary</b-button>
                   </b-col>
                 </b-row>
               </b-form>

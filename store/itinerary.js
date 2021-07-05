@@ -1,6 +1,8 @@
 export const state = () => ({
   itineraries: null,
   popularItineraries: null,
+  reviewedItineraries: null,
+  unreviewedItineraries: null,
   itineraryDetail: null,
   tempItinerary: null,
   tempItineraryItem: null,
@@ -13,6 +15,15 @@ export const mutations = {
 
   setPopularItineraries(state, payload) {
     state.popularItineraries = payload;
+  },
+
+  // TODO Set displayed itineraries as one state
+  setReviewedItineraries(state, payload) {
+    state.reviewedItineraries = payload;
+  },
+
+  setUnreviewedItineraries(state, payload) {
+    state.unreviewedItineraries = payload;
   },
 
   setItineraryDetail(state, payload) {
@@ -29,8 +40,7 @@ export const mutations = {
 };
 
 export const actions = {
-  // TODO Centralized API Response
-
+  // TODO Centralized all API Response
   async createItinerary({ dispatch }, payload) {
     const qs = require("querystring");
     const config = {
@@ -101,6 +111,26 @@ export const actions = {
     let data = (state.itineraries).filter(checkPopularItinerary);
 
     commit("setPopularItineraries", data);
+  },
+
+  async getAllReviewedItineraries({ commit, state }) {
+    function checkItinerary(itinerary) {
+      return itinerary.isReviewed;
+    };
+
+    let data = (state.itineraries).filter(checkItinerary);
+
+    commit("setReviewedItineraries", data);
+  },
+  
+  async getAllUnreviewedItineraries({ commit, state }) {
+    function checkItinerary(itinerary) {
+      return itinerary.isReviewed == 0;
+    };
+
+    let data = (state.itineraries).filter(checkItinerary);
+
+    commit("setUnreviewedItineraries", data);
   },
 
   async getItineraryDetail({ commit }, id) {
