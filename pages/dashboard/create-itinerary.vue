@@ -26,13 +26,24 @@
                         -
                         {{ item.timeEnd }}
                       </p>
+                      <p>
+                        Budget:
+                        {{ parseInt(item.price) | currencyIndonesiaFormat() }}
+                      </p>
                     </li>
+                    <div>
+                      <h5 class="list-title mb-0 py-0" style="margin-left: -0.6rem; margin-right: 0.6rem">
+                        <span class="font-weight-bold">Total Price:</span> <br>
+                        {{ getTotalPrice(list) | currencyIndonesiaFormat() }}
+                      </h5>
+                    </div>
                     <b-button variant="black" @click="toggleActivityModal(index + 1)" class="add-card-btn">
                       <i class="fa fa-plus-circle mr-1"></i> 
                       Add activity
                     </b-button>
                   </ul>
                 </div>
+
                 <b-button variant="primary" @click="addList" class="add-list-btn">
                   <i class="fa fa-plus-circle mr-1"></i>
                   Add a list
@@ -107,6 +118,16 @@
           this.$store.dispatch("itinerary/updateTempItinerary", { name: this.form.itin.name, day: day });
           this.$bvModal.show('modal-add-activity');
         }
+      },
+
+      getTotalPrice(lists) {
+        let totalPrice = 0;
+
+        lists.forEach(list => {
+          totalPrice += parseInt(list.price); 
+        });
+
+        return totalPrice;
       },
 
       countDownChanged(dismissCountDown) {
