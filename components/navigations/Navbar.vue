@@ -21,7 +21,7 @@
         <b-nav-item v-if="isDashboard" to="/dashboard" class="btn btn-round btn-primary d-flex align-items-center justify-content-center">
           <i class="fa fa-user" aria-hidden="true"></i>
         </b-nav-item>
-        <b-nav-item v-else to="/auth/login" class="btn btn-md btn-primary">Login</b-nav-item>
+        <b-nav-item v-else to="/dashboard" class="btn btn-md btn-primary">Login</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
