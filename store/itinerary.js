@@ -29,7 +29,9 @@ export const mutations = {
 };
 
 export const actions = {
-  async createItinerary({ commit, dispatch }, payload) {
+  // TODO Centralized API Response
+
+  async createItinerary({ dispatch }, payload) {
     const qs = require("querystring");
     const config = {
       headers: {
@@ -37,10 +39,10 @@ export const actions = {
       }
     };
 
-    await this.$axios.post("/itin/create", qs.stringify(payload), config)
+    await this.$axios.post("/itin/create", qs.stringify(payload.itin), config)
       .then(res => {
-        if (res.status == "success") {
-          return res.itinId;
+        if (res.data.status == "success") {
+          dispatch("createItemPerDayItinerary", { itinId: res.data.itinId, itemPerDay: payload.itemPerDay });
         }
       }).catch(err => {
         console.error(err.response.data);
@@ -55,14 +57,28 @@ export const actions = {
       }
     };
 
-    await this.$axios.post("/item/create", qs.stringify(payload), config)
-      .then(res => {
-        if (res.status == "success") {
-          return res.itinId;
-        }
-      }).catch(err => {
-        console.error(err.response.data);
-      })
+    (payload.itemPerDay).forEach(async items => {
+      items.forEach(async (item, index) => {
+        const data = { 
+          idItin: payload.itinId, 
+          day: (index + 1), 
+          destination: item.locationId,
+          desc: item.desc,
+          timeStart: item.timeStart.split(":")[0] + ":" + item.timeStart.split(":")[1],
+          timeEnd: item.timeEnd.split(":")[0] + ":" + item.timeEnd.split(":")[1],
+          price: parseInt(item.price)
+        };
+
+        await this.$axios.post("/item/create", qs.stringify(data), config)
+          .then(res => {
+            if (res.data.status == "success") {
+              console.log(`Create item success on id ${payload.itinId}`);
+            }
+          }).catch(err => {
+            console.error(err.response.data);
+          });
+      });  
+    });
   },
 
   async getAllItineraries({ commit }) {

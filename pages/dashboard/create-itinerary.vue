@@ -130,7 +130,9 @@
 
         this.$store.dispatch("itinerary/createItinerary", this.form)
           .then(() => {
-            this.$store.dispatch("alert/displayError", { message: "Itinerary successfully created. Let's do your journey!" });
+            // TODO Centralized alert message
+            this.$store.dispatch("alert/displaySuccess", { message: "Itinerary successfully created. Let's do your journey!" });
+            this.$router.push("/dashboard");
           }).catch(() => {
             this.$store.dispatch("alert/displayError", { message: "Something's wrong when create itinerary. Please try again later." });
           }).finally(() => {
